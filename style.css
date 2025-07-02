@@ -63,3 +63,26 @@ footer {
     background: #333;
     color: #fff;
 }
+
+/* 모든 이미지에 적용 */
+img {
+    max-width: 100%; /* 이미지가 부모 요소의 너비를 넘지 않도록 최대 너비 100% 설정 */
+    height: auto;    /* 가로세로 비율 유지 (이미지가 찌그러지지 않음) */
+    display: block;  /* 이미지를 블록 요소로 만들어 위아래 공간을 확보하고 정렬을 쉽게 함 */
+    margin: 20px auto; /* 이미지 위아래로 20px 여백, 좌우 자동(가운데 정렬) */
+}
+
+/* 만약 특정 이미지들이 나란히 정렬되어야 한다면, 해당 이미지를 감싸는 div에 flexbox 적용 */
+.image-group { /* 예를 들어, index.html에서 <div class="image-group"> 안에 이미지들이 있다면 */
+    display: flex;
+    flex-wrap: wrap; /* 화면이 좁아지면 다음 줄로 넘어가도록 */
+    gap: 15px; /* 이미지 사이 간격 */
+    justify-content: center; /* 가운데 정렬 */
+    align-items: flex-start; /* 상단 정렬 */
+}
+
+.image-group img {
+    max-width: calc(33% - 10px); /* 한 줄에 3개 이미지가 들어갈 경우 (간격 고려) */
+    /* 또는 고정 너비: width: 300px; */
+    height: auto;
+}
