@@ -59,17 +59,21 @@ nav ul {
     padding: 0;
     list-style: none;
     margin: 0; /* ul의 기본 마진 제거 */
+    white-space: nowrap; /* 네비게이션 항목이 한 줄로 유지되도록 함 */
+    overflow-x: auto; /* 내용이 넘칠 경우 가로 스크롤바 표시 */
+    -webkit-overflow-scrolling: touch; /* iOS에서 부드러운 스크롤링 */
 }
 
 nav ul li {
     display: inline-block; /* inline-block으로 변경하여 세로 정렬 문제 방지 */
     margin: 0 15px; /* 네비게이션 항목 간의 간격 */
+    vertical-align: middle; /* 텍스트 베이스라인 정렬 문제 해결 */
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    font-size: 0.9em; /* 네비게이션 링크 폰트 사이즈 */
+    font-size: 0.8em; /* 기본 폰트 사이즈를 0.8em으로 더 작게 조정 */
     padding: 5px 0; /* 클릭 영역 확보 */
     display: block; /* padding 적용을 위해 블록 요소로 변경 */
 }
@@ -192,7 +196,7 @@ a img {
     }
 
     nav a {
-        font-size: 1em;
+        font-size: 0.9em; /* 태블릿 이상에서 폰트 사이즈를 0.9em으로 조절 */
     }
 
     main {
@@ -238,6 +242,10 @@ a img {
 
     nav ul li {
         margin: 0 30px;
+    }
+
+    nav a {
+        font-size: 1em; /* 큰 데스크톱에서 폰트 사이즈를 1em (기본)으로 조절 */
     }
 
     main {
