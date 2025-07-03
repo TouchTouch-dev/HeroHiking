@@ -12,7 +12,7 @@ body {
 header {
   
     color: white; /* 헤더 내 텍스트 색상 (배경이 어두울 경우 대비) */
-    padding: 10vh 20px; /* 뷰포트 높이의 10%를 상하 여백으로 설정 */
+    padding: 3vh 20px; /* 뷰포트 높이의 3%를 상하 여백으로 설정 (5% 미만) */
     text-align: center; /* 헤더 내 텍스트를 가운데 정렬 */
     
     display: flex; /* Flexbox를 사용하여 내부 요소 정렬 */
@@ -24,7 +24,7 @@ header {
     width: 100%; /* 너비를 100%로 설정하여 부모 요소에 꽉 채움 */
     margin: 0 auto; /* (필요하다면 유지, 하지만 width 100%에서는 의미 없음) */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* (선택 사항) 그림자 추가 */
-    min-height: 10vh; /* 최소 높이도 뷰포트 높이의 10%로 설정 (필요에 따라 조절) */
+    min-height: 3vh; /* 최소 높이도 뷰포트 높이의 3%로 설정 (필요에 따라 조절) */
 }
 
 header .header-logo {
@@ -46,7 +46,7 @@ header p {
 
 /* --- 네비게이션 스타일 --- */
 nav {
-    background: #444;
+    background: #558B5E; /* 기존 #444에서 녹색 계열로 변경*/
     color: #fff;
     padding: 0.5rem 0;
     text-align: center;
@@ -94,6 +94,16 @@ main {
     border-bottom: none;
 }
 
+/* 제안개요 섹션 스타일 (기존과 동일하게 유지) */
+#overview {
+    /* 이전에 요청하셨던 제안개요 섹션의 배경색은 그대로 흰색 배경을 유지합니다. */
+    /* 만약 이 섹션도 초록색으로 원하신다면 이 주석을 제거하고 아래 코드를 활성화하세요. */
+    /* background-color: #558B5E; */
+    /* color: white; */
+    /* padding: 30px; */
+}
+
+
 h2 {
     font-size: 1.8em; /* h2 폰트 사이즈 */
     margin-top: 0;
@@ -115,7 +125,7 @@ h4 {
 /* --- 푸터 스타일 --- */
 footer {
     text-align: center;
-    padding: 10vh 20px; /* 뷰포트 높이의 10%를 상하 패딩으로 설정 */
+    padding: 3vh 20px; /* 뷰포트 높이의 3%를 상하 패딩으로 설정 (5% 미만) */
     background-image: url('image/SliceFooter.png'); /* 푸터 배경 이미지 */
     background-size: cover; /* 이미지가 푸터 영역을 꽉 채우도록 설정 (변경) */
     background-position: center; /* 이미지를 중앙에 위치 */
@@ -125,7 +135,7 @@ footer {
     width: 100%; /* 너비를 100%로 설정하여 부모 요소에 꽉 채움 */
     margin: 0 auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-    min-height: 10vh; /* 최소 높이도 뷰포트 높이의 10%로 설정 (필요에 따라 조절) */
+    min-height: 3vh; /* 최소 높이도 뷰포트 높이의 3%로 설정 (필요에 따라 조절) */
 }
 
 /* --- 이미지 스타일 --- */
@@ -165,8 +175,8 @@ a img {
     }
 
     header {
-        padding: 8vh 20px; /* 태블릿 이상에서 헤더 상하 패딩 조절 */
-        min-height: 8vh; /* 태블릿 이상에서 헤더 최소 높이 조절 */
+        padding: 2.5vh 20px; /* 태블릿 이상에서 헤더 상하 패딩 조절 (5% 미만) */
+        min-height: 2.5vh; /* 태블릿 이상에서 헤더 최소 높이 조절 */
     }
 
     header h1 {
@@ -202,8 +212,8 @@ a img {
     }
 
     footer {
-        padding: 8vh 20px; /* 태블릿 이상에서 푸터 상하 패딩 조절 */
-        min-height: 8vh; /* 태블릿 이상에서 푸터 최소 높이 조절 */
+        padding: 2.5vh 20px; /* 태블릿 이상에서 푸터 상하 패딩 조절 (5% 미만) */
+        min-height: 2.5vh; /* 태블릿 이상에서 푸터 최소 높이 조절 */
     }
 }
 
@@ -214,8 +224,8 @@ a img {
     }
 
     header {
-        padding: 6vh 20px; /* 큰 데스크톱에서 헤더 상하 패딩 조절 */
-        min-height: 6vh; /* 큰 데스크톱에서 헤더 최소 높이 조절 */
+        padding: 2vh 20px; /* 큰 데스크톱에서 헤더 상하 패딩 조절 (5% 미만) */
+        min-height: 2vh; /* 큰 데스크톱에서 헤더 최소 높이 조절 */
     }
     
     header h1 {
@@ -239,7 +249,7 @@ a img {
     }
     
     footer {
-        padding: 6vh 20px; /* 큰 데스크톱에서 푸터 상하 패딩 조절 */
-        min-height: 6vh; /* 큰 데스크톱에서 푸터 최소 높이 조절 */
+        padding: 2vh 20px; /* 큰 데스크톱에서 푸터 상하 패딩 조절 (5% 미만) */
+        min-height: 2vh; /* 큰 데스크톱에서 푸터 최소 높이 조절 */
     }
 }
