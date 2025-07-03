@@ -10,12 +10,9 @@ body {
 
 /* --- 헤더 스타일 --- */
 header {
-    background-image: url('image/SliceHeader.png'); /* 헤더 배경 이미지 */
-    background-size: cover; /* 이미지가 헤더 영역을 꽉 채우도록 설정 (변경) */
-    background-position: center; /* 이미지를 헤더 영역의 중앙에 위치 */
-    background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+  
     color: white; /* 헤더 내 텍스트 색상 (배경이 어두울 경우 대비) */
-    padding: 100px 20px; /* 헤더의 상하 여백을 조정하여 이미지와 텍스트 공간 확보 */
+    padding: 10vh 20px; /* 뷰포트 높이의 10%를 상하 여백으로 설정 */
     text-align: center; /* 헤더 내 텍스트를 가운데 정렬 */
     
     display: flex; /* Flexbox를 사용하여 내부 요소 정렬 */
@@ -27,7 +24,13 @@ header {
     width: 100%; /* 너비를 100%로 설정하여 부모 요소에 꽉 채움 */
     margin: 0 auto; /* (필요하다면 유지, 하지만 width 100%에서는 의미 없음) */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* (선택 사항) 그림자 추가 */
-    min-height: 250px; /* 헤더 이미지의 비율을 고려하여 최소 높이 설정 (조정 가능) */
+    min-height: 10vh; /* 최소 높이도 뷰포트 높이의 10%로 설정 (필요에 따라 조절) */
+}
+
+header .header-logo {
+    max-width: 300px; /* 로고의 최대 너비를 300px로 제한 (원하는 크기로 조절 가능) */
+    height: auto; /* 비율을 유지하면서 높이 자동 조절 */
+    margin: 0 auto 20px auto; /* 가운데 정렬 및 하단 마진 추가 */
 }
 
 header h1 {
@@ -112,7 +115,7 @@ h4 {
 /* --- 푸터 스타일 --- */
 footer {
     text-align: center;
-    padding: 100px 20px; /* 푸터의 상하 패딩을 조정하여 이미지와 텍스트 공간 확보 */
+    padding: 10vh 20px; /* 뷰포트 높이의 10%를 상하 패딩으로 설정 */
     background-image: url('image/SliceFooter.png'); /* 푸터 배경 이미지 */
     background-size: cover; /* 이미지가 푸터 영역을 꽉 채우도록 설정 (변경) */
     background-position: center; /* 이미지를 중앙에 위치 */
@@ -122,7 +125,7 @@ footer {
     width: 100%; /* 너비를 100%로 설정하여 부모 요소에 꽉 채움 */
     margin: 0 auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-    min-height: 250px; /* 푸터 이미지의 비율을 고려하여 최소 높이 설정 (조정 가능) */
+    min-height: 10vh; /* 최소 높이도 뷰포트 높이의 10%로 설정 (필요에 따라 조절) */
 }
 
 /* --- 이미지 스타일 --- */
@@ -162,8 +165,8 @@ a img {
     }
 
     header {
-        padding: 150px 20px; /* 헤더 상하 패딩 증가 */
-        min-height: 300px; /* 헤더 최소 높이 증가 */
+        padding: 8vh 20px; /* 태블릿 이상에서 헤더 상하 패딩 조절 */
+        min-height: 8vh; /* 태블릿 이상에서 헤더 최소 높이 조절 */
     }
 
     header h1 {
@@ -199,8 +202,8 @@ a img {
     }
 
     footer {
-        padding: 150px 20px; /* 푸터 상하 패딩 증가 */
-        min-height: 300px; /* 푸터 최소 높이 증가 */
+        padding: 8vh 20px; /* 태블릿 이상에서 푸터 상하 패딩 조절 */
+        min-height: 8vh; /* 태블릿 이상에서 푸터 최소 높이 조절 */
     }
 }
 
@@ -211,8 +214,8 @@ a img {
     }
 
     header {
-        padding: 200px 20px; /* 헤더 상하 패딩 더 증가 */
-        min-height: 400px; /* 헤더 최소 높이 더 증가 */
+        padding: 6vh 20px; /* 큰 데스크톱에서 헤더 상하 패딩 조절 */
+        min-height: 6vh; /* 큰 데스크톱에서 헤더 최소 높이 조절 */
     }
     
     header h1 {
@@ -236,7 +239,7 @@ a img {
     }
     
     footer {
-        padding: 200px 20px; /* 푸터 상하 패딩 더 증가 */
-        min-height: 400px; /* 푸터 최소 높이 더 증가 */
+        padding: 6vh 20px; /* 큰 데스크톱에서 푸터 상하 패딩 조절 */
+        min-height: 6vh; /* 큰 데스크톱에서 푸터 최소 높이 조절 */
     }
 }
