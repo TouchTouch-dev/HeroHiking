@@ -8,9 +8,10 @@ body {
     font-size: 15px; /* 전체 body 폰트 사이즈 */
 }
 
+/* --- 헤더 스타일 --- */
 header {
     background-image: url('image/SliceHeader.png'); /* 헤더 배경 이미지 */
-    background-size: contain; /* 이미지가 잘리지 않고 요소 안에 완전히 포함되도록 설정 (수정) */
+    background-size: cover; /* 이미지가 헤더 영역을 꽉 채우도록 설정 (변경) */
     background-position: center; /* 이미지를 헤더 영역의 중앙에 위치 */
     background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
     color: white; /* 헤더 내 텍스트 색상 (배경이 어두울 경우 대비) */
@@ -22,10 +23,11 @@ header {
     justify-content: center; /* 수직 가운데 정렬 */
     align-items: center; /* 수평 가운데 정렬 */
     
-    max-width: 960px; /* main 및 footer와 동일한 최대 너비 설정 */
-    margin: 0 auto; /* 헤더를 가운데 정렬 */
+    /* max-width 제거 - 전체 너비를 사용하도록 */
+    width: 100%; /* 너비를 100%로 설정하여 부모 요소에 꽉 채움 */
+    margin: 0 auto; /* (필요하다면 유지, 하지만 width 100%에서는 의미 없음) */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* (선택 사항) 그림자 추가 */
-    /* min-height는 필요에 따라 제거하거나 자동(auto)으로 설정 */
+    min-height: 250px; /* 헤더 이미지의 비율을 고려하여 최소 높이 설정 (조정 가능) */
 }
 
 header h1 {
@@ -39,35 +41,45 @@ header p {
     margin-bottom: 0;
 }
 
+/* --- 네비게이션 스타일 --- */
 nav {
     background: #444;
     color: #fff;
     padding: 0.5rem 0;
     text-align: center;
+    position: sticky; /* 스크롤 시 상단에 고정 */
+    top: 0; /* 상단에 고정 */
+    z-index: 1000; /* 다른 요소 위에 오도록 z-index 설정 */
 }
 
 nav ul {
     padding: 0;
     list-style: none;
+    margin: 0; /* ul의 기본 마진 제거 */
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 15px; /* 네비게이션 항목 간의 간격 */
+    display: inline-block; /* inline-block으로 변경하여 세로 정렬 문제 방지 */
+    margin: 0 15px; /* 네비게이션 항목 간의 간격 */
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
     font-size: 0.9em; /* 네비게이션 링크 폰트 사이즈 */
+    padding: 5px 0; /* 클릭 영역 확보 */
+    display: block; /* padding 적용을 위해 블록 요소로 변경 */
 }
 
+/* --- 메인 콘텐츠 스타일 --- */
 main {
     padding: 20px;
-    max-width: 960px;
+    max-width: 1200px; /* PC에서 더 넓은 최대 너비 설정 */
+    width: 90%; /* 화면 너비에 따라 유동적으로 조절 */
     margin: auto;
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
 }
 
 .page-section {
@@ -97,19 +109,23 @@ h4 {
     margin-bottom: 8px;
 }
 
+/* --- 푸터 스타일 --- */
 footer {
     text-align: center;
     padding: 100px 20px; /* 푸터의 상하 패딩을 조정하여 이미지와 텍스트 공간 확보 */
     background-image: url('image/SliceFooter.png'); /* 푸터 배경 이미지 */
-    background-size: contain; /* 이미지가 잘리지 않고 요소 안에 완전히 포함되도록 설정 (수정) */
+    background-size: cover; /* 이미지가 푸터 영역을 꽉 채우도록 설정 (변경) */
     background-position: center; /* 이미지를 중앙에 위치 */
     background-repeat: no-repeat; /* 이미지가 반복되지 않도록 */
     color: white; /* 푸터 텍스트 색상 */
-    max-width: 960px;
+    /* max-width 제거 - 전체 너비를 사용하도록 */
+    width: 100%; /* 너비를 100%로 설정하여 부모 요소에 꽉 채움 */
     margin: 0 auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    min-height: 250px; /* 푸터 이미지의 비율을 고려하여 최소 높이 설정 (조정 가능) */
 }
 
+/* --- 이미지 스타일 --- */
 /* 모든 이미지에 적용 */
 img {
     max-width: 100%;
@@ -136,4 +152,91 @@ img {
 a img {
     border: none;
     text-decoration: none;
+}
+
+/* --- 미디어 쿼리 (반응형 디자인) --- */
+/* 태블릿 및 작은 데스크톱 */
+@media (min-width: 768px) {
+    body {
+        font-size: 16px; /* 태블릿 이상에서 폰트 크기 약간 증가 */
+    }
+
+    header {
+        padding: 150px 20px; /* 헤더 상하 패딩 증가 */
+        min-height: 300px; /* 헤더 최소 높이 증가 */
+    }
+
+    header h1 {
+        font-size: 3em;
+    }
+
+    header p {
+        font-size: 1.4em;
+    }
+
+    nav ul li {
+        margin: 0 20px;
+    }
+
+    nav a {
+        font-size: 1em;
+    }
+
+    main {
+        padding: 30px;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.7em;
+    }
+
+    h4 {
+        font-size: 1.3em;
+    }
+
+    footer {
+        padding: 150px 20px; /* 푸터 상하 패딩 증가 */
+        min-height: 300px; /* 푸터 최소 높이 증가 */
+    }
+}
+
+/* 큰 데스크톱 */
+@media (min-width: 1200px) {
+    body {
+        font-size: 17px; /* 큰 데스크톱에서 폰트 크기 추가 증가 */
+    }
+
+    header {
+        padding: 200px 20px; /* 헤더 상하 패딩 더 증가 */
+        min-height: 400px; /* 헤더 최소 높이 더 증가 */
+    }
+    
+    header h1 {
+        font-size: 3.5em;
+    }
+
+    header p {
+        font-size: 1.6em;
+    }
+
+    nav ul li {
+        margin: 0 30px;
+    }
+
+    main {
+        padding: 40px;
+    }
+
+    h2 {
+        font-size: 2.2em;
+    }
+    
+    footer {
+        padding: 200px 20px; /* 푸터 상하 패딩 더 증가 */
+        min-height: 400px; /* 푸터 최소 높이 더 증가 */
+    }
 }
