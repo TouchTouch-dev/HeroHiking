@@ -40,10 +40,12 @@ footer {
 header h1 {
     font-size: 3em;
     margin-bottom: 10px;
+    vertical-align: top; /* 추가 */
 }
 
 header p {
     font-size: 1.5em;
+    vertical-align: top; /* 추가 */
 }
 
 nav {
