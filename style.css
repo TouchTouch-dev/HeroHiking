@@ -10,42 +10,26 @@ body {
 header {
     background-image: url('image/SliceHeader.png'); /* 헤더 배경 이미지 */
     background-size: cover; /* 이미지가 헤더 영역을 꽉 채우도록 설정 */
-    background-position: center; /* 이미지를 헤더 영역의 중앙에 위치 */
+    background-position: top center; /* 이미지를 헤더 영역의 상단 중앙에 위치 (수정) */
     background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
     color: white; /* 헤더 내 텍스트 색상 (배경이 어두울 경우 대비) */
-    padding: 80px 20px; /* 헤더의 상하 여백을 줄여 모바일에서 너무 크지 않도록 조절 */
+    padding: 80px 20px; /* 헤더의 상하 여백을 유지 */
     text-align: center; /* 헤더 내 텍스트를 가운데 정렬 */
     
-    /* <--- 여기부터 헤더 폭을 main 및 footer와 일치시키는 코드 (추가) --- */
+    min-height: 300px; /* 헤더의 최소 높이를 충분히 확보하여 배경 이미지가 잘리지 않도록 (추가/수정) */
+
     max-width: 960px; /* main 및 footer와 동일한 최대 너비 설정 */
     margin: 0 auto; /* 헤더를 가운데 정렬 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* (선택 사항) 그림자 추가 */
-    /* ------------------------------------------------------------------- */
-}
-
-footer {
-    text-align: center;
-    padding: 80px 20px; /* 푸터의 상하 여백을 줄여 모바일에서 너무 크지 않도록 조절 */
-    background-image: url('image/SliceFooter.png'); /* 푸터 배경 이미지 */
-    background-size: cover; /* 이미지가 푸터 영역을 꽉 채우도록 */
-    background-position: center; /* 이미지를 중앙에 위치 */
-    background-repeat: no-repeat; /* 이미지가 반복되지 않도록 */
-    color: white; /* 푸터 텍스트 색상 */
-
-    max-width: 960px; /* main 섹션과 동일한 최대 너비 설정 */
-    margin: 0 auto; /* 푸터를 가운데 정렬 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
 }
 
 header h1 {
     font-size: 3em;
     margin-bottom: 10px;
-    vertical-align: top; /* 추가 */
 }
 
 header p {
     font-size: 1.5em;
-    vertical-align: top; /* 추가 */
 }
 
 nav {
@@ -85,6 +69,20 @@ main {
 
 .page-section:last-child {
     border-bottom: none;
+}
+
+footer {
+    text-align: center;
+    padding: 80px 20px; /* 푸터의 상하 여백을 유지 */
+    background-image: url('image/SliceFooter.png'); /* 푸터 배경 이미지 */
+    background-size: cover; /* 이미지가 푸터 영역을 꽉 채우도록 */
+    background-position: center; /* 이미지를 중앙에 위치 */
+    background-repeat: no-repeat; /* 이미지가 반복되지 않도록 */
+    color: white; /* 푸터 텍스트 색상 */
+
+    max-width: 960px; /* main 섹션과 동일한 최대 너비 설정 */
+    margin: 0 auto; /* 푸터를 가운데 정렬 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
 }
 
 /* 모든 이미지에 적용 */
