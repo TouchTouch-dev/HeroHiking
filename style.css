@@ -5,31 +5,36 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    font-size: 15px; /* 전체 body 폰트 사이즈를 약간 줄였습니다. */
 }
 
 header {
     background-image: url('image/SliceHeader.png'); /* 헤더 배경 이미지 */
     background-size: cover; /* 이미지가 헤더 영역을 꽉 채우도록 설정 */
-    background-position: top center; /* 이미지를 헤더 영역의 상단 중앙에 위치 (수정) */
+    background-position: top center; /* 이미지를 헤더 영역의 상단 중앙에 위치 */
     background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
     color: white; /* 헤더 내 텍스트 색상 (배경이 어두울 경우 대비) */
-    padding: 80px 20px; /* 헤더의 상하 여백을 유지 */
-    text-align: center; /* 헤더 내 텍스트를 가운데 정렬 */
-    
-    min-height: 300px; /* 헤더의 최소 높이를 충분히 확보하여 배경 이미지가 잘리지 않도록 (추가/수정) */
-
-    max-width: 960px; /* main 및 footer와 동일한 최대 너비 설정 */
-    margin: 0 auto; /* 헤더를 가운데 정렬 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* (선택 사항) 그림자 추가 */
+    padding: 40px 20px; /* 상하 패딩 값을 줄여 헤더 전체 높이를 줄입니다. */
+    text-align: center;
+    min-height: auto; /* 최소 높이를 자동으로 조절하도록 변경 */
+    display: flex; /* Flexbox를 사용하여 내부 요소 수직 가운데 정렬 */
+    flex-direction: column;
+    justify-content: center; /* 수직 가운데 정렬 */
+    align-items: center; /* 수평 가운데 정렬 */
+    max-width: 960px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
+    font-size: 2.5em; /* 헤더 h1 폰트 사이즈를 줄였습니다. (기존 3em) */
+    margin-bottom: 8px; /* 마진도 약간 줄였습니다. */
 }
 
 header p {
-    font-size: 1.5em;
+    font-size: 1.2em; /* 헤더 p 폰트 사이즈를 줄였습니다. (기존 1.5em) */
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 nav {
@@ -46,12 +51,13 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin-right: 20px;
+    margin-right: 15px; /* 네비게이션 항목 간의 간격을 약간 줄였습니다. */
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
+    font-size: 0.9em; /* 네비게이션 링크 폰트 사이즈를 줄였습니다. */
 }
 
 main {
@@ -63,7 +69,7 @@ main {
 }
 
 .page-section {
-    padding: 40px 0;
+    padding: 30px 0; /* 섹션 패딩을 약간 줄였습니다. */
     border-bottom: 1px solid #eee;
 }
 
@@ -71,18 +77,35 @@ main {
     border-bottom: none;
 }
 
+h2 {
+    font-size: 1.8em; /* h2 폰트 사이즈를 약간 줄였습니다. */
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 1.5em; /* h3 폰트 사이즈를 약간 줄였습니다. */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 1.2em; /* h4 폰트 사이즈를 약간 줄였습니다. */
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
 footer {
     text-align: center;
-    padding: 80px 20px; /* 푸터의 상하 여백을 유지 */
+    padding: 60px 20px; /* 푸터의 상하 패딩을 약간 줄였습니다. (기존 80px) */
     background-image: url('image/SliceFooter.png'); /* 푸터 배경 이미지 */
     background-size: cover; /* 이미지가 푸터 영역을 꽉 채우도록 */
     background-position: center; /* 이미지를 중앙에 위치 */
     background-repeat: no-repeat; /* 이미지가 반복되지 않도록 */
     color: white; /* 푸터 텍스트 색상 */
-
-    max-width: 960px; /* main 섹션과 동일한 최대 너비 설정 */
-    margin: 0 auto; /* 푸터를 가운데 정렬 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    max-width: 960px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* 모든 이미지에 적용 */
@@ -90,20 +113,20 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 20px auto;
+    margin: 15px auto; /* 이미지 상하 마진을 약간 줄였습니다. */
 }
 
 /* 만약 특정 이미지들이 나란히 정렬되어야 한다면, 해당 이미지를 감싸는 div에 flexbox 적용 */
 .image-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px; /* 이미지 그룹 간격도 약간 줄였습니다. */
     justify-content: center;
     align-items: flex-start;
 }
 
 .image-group img {
-    max-width: calc(33% - 10px);
+    max-width: calc(33% - 7px); /* 간격 조절에 맞춰서 이미지 너비도 조정 */
     height: auto;
 }
 
@@ -111,4 +134,12 @@ img {
 a img {
     border: none;
     text-decoration: none;
+}
+
+/* 아이폰과 같이 화면 높이가 짧은 기기에서 추가적으로 패딩을 줄일 수 있습니다. */
+@media screen and (max-height: 700px) and (orientation: portrait) {
+    header {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 }
