@@ -3,56 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>히어로 하이킹</title>
+    <title>초록우산 모방 페이지 - 기본 레이아웃</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="image/HEROHIKING_LOGO.png" alt="Hero Hiking Logo" class="header-logo">
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo"><a href="#">내 단체명</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">사업 소개</a></li>
+                    <li><a href="#">후원하기</a></li>
+                    <li><a href="#">소식</a></li>
+                    <li><a href="#">재단 소개</a></li>
+                    <li><a href="#" class="btn-donate">지금 후원하기</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#overview">제안개요</a></li>
-            <li><a href="#overview_program">행사개요</a></li>
-            <li><a href="#program">행사계획</a></li>
-            <li><a href="#promotion">홍보 및 일정</a></li>
-            <li><a href="#contact">문의</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="overview" class="page-section">
-            <img src="image/Slice1.png" alt="마침표 로고 또는 핵심 가치 부분">
-            <img src="image/Slice2.png" alt="마침표 주요 사업 영역 중 일부">
-            <img src="image/Slice3.png" alt="마침표의 다른 활동 이미지">
-        </section>
-        
-        <section id="overview_program" class="page-section">
-            <img src="image/HEROHIKING_0006.jpg" alt="행사개요">
-            <img src="image/HEROHIKING_0007.jpg" alt="행사개요">
-        </section>
-
-        <section id="program" class="page-section">
-            <img src="image/HEROHIKING_0008.jpg" alt="개막식">
-            <img src="image/HEROHIKING_0009.jpg" alt="폐막식">
-            <img src="image/HEROHIKING_0010.jpg" alt="부스운영">
-        </section>
-
-        <section id="promotion" class="page-section">
-            <img src="image/HEROHIKING_0011.jpg" alt="홍보계획">
-            <img src="image/HEROHIKING_0012.jpg" alt="일정계획">
-        </section>
-
-        <section id="contact" class="page-section">
-            <h2>문의</h2>
-            <p>궁금한 점이 있다면 언제든지 문의해주세요.</p>
-            <p>대한민국 지속가능발전연구소 / 마침표</p>
-        </section>
+    <main class="main-content">
+        <div class="container">
+            <h2>우리의 아이들을 위해 함께해주세요</h2>
+            <p>이곳에 주요 캠페인 내용이나 재단 소개 글이 들어갈 예정입니다.</p>
+            <section class="campaign-section">
+                <h3>주요 캠페인</h3>
+                <div class="campaign-cards">
+                    <div class="card">
+                        <h4>캠페인 1</h4>
+                        <p>캠페인 요약 설명입니다.</p>
+                        <a href="#" class="btn-more">자세히 보기</a>
+                    </div>
+                    <div class="card">
+                        <h4>캠페인 2</h4>
+                        <p>두 번째 캠페인 요약 설명입니다.</p>
+                        <a href="#" class="btn-more">자세히 보기</a>
+                    </div>
+                    <div class="card">
+                        <h4>캠페인 3</h4>
+                        <p>세 번째 캠페인 요약 설명입니다.</p>
+                        <a href="#" class="btn-more">자세히 보기</a>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <footer>
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 내 단체명. All rights reserved.</p>
+        </div>
     </footer>
-
 </body>
 </html>
