@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>초록우산 후원하기</title>
+    <link rel="stylesheet" href="support_style.css">
+</head>
+<body>
+    <div class="support-container">
+        <h2 class="page-title">따뜻한 마음, 함께 나눠요!</h2>
+
+        <div class="support-section">
+            <h3>후원 종류 선택</h3>
+            <div class="support-type-options">
+                <label class="radio-card active">
+                    <input type="radio" name="supportType" value="monthly" checked>
+                    <span>정기후원 (매월)</span>
+                </label>
+                <label class="radio-card">
+                    <input type="radio" name="supportType" value="onetime">
+                    <span>일시후원 (한 번만)</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="support-section">
+            <h3>후원 금액 선택</h3>
+            <div class="amount-options">
+                <label class="radio-card amount-card" data-amount="20000">
+                    <input type="radio" name="supportAmount" value="20000">
+                    <span>2만원</span>
+                </label>
+                <label class="radio-card amount-card active" data-amount="30000">
+                    <input type="radio" name="supportAmount" value="30000" checked>
+                    <span>3만원</span>
+                </label>
+                <label class="radio-card amount-card" data-amount="50000">
+                    <input type="radio" name="supportAmount" value="50000">
+                    <span>5만원</span>
+                </label>
+                <label class="radio-card amount-card" data-amount="100000">
+                    <input type="radio" name="supportAmount" value="100000">
+                    <span>10만원</span>
+                </label>
+            </div>
+            <div class="custom-amount-area">
+                <label for="customAmount">직접 입력:</label>
+                <input type="text" id="customAmount" placeholder="금액을 입력해주세요 (원)">
+                <p class="current-selected-amount">선택된 금액: <span id="displayAmount">30,000</span>원</p>
+            </div>
+        </div>
+
+        <div class="next-step-button">
+            <button type="button" id="nextButton" disabled>다음 단계로</button>
+        </div>
+    </div>
+
+    <script src="support_script.js"></script>
+</body>
+</html>
