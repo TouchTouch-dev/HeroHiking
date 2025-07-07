@@ -196,7 +196,8 @@ body {
 
 @media (max-width: 480px) {
     .radio-card {
-        flex: 1 1 95%; /* 한 개씩 한 줄, 거의 전체 너비 */
+        /* 이 부분을 수정하여 480px 이하에서도 한 줄에 2개씩 보이도록 변경 */
+        flex: 1 1 calc(50% - 8px); /* 한 줄에 두 개씩, gap 8px 고려 */
         font-size: 0.9rem; /* 폰트 사이즈 다시 조절 */
     }
     .page-title {
