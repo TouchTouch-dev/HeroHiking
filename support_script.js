@@ -12,12 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedAmount = null;
 
     // 페이지 로드 시 '선택된 금액'을 0원으로 초기화
-    displayAmountSpan.textContent = '0원'; //
+    displayAmountSpan.textContent = '0원';
 
     // '직접 입력' input 값이 변경될 때마다 selectedAmount 업데이트 및 화면 표시
     customAmountInput.addEventListener('input', function() {
-        // 숫자만 입력되도록 필터링 및 콤마 제거
+        // 숫자만 입력되도록 필터링
         const rawValue = this.value.replace(/[^0-9]/g, '');
+        this.value = rawValue; // 입력 필드에 숫자만 남도록 즉시 반영
+
         const numberValue = parseInt(rawValue, 10);
 
         // 유효한 숫자인 경우에만 처리
