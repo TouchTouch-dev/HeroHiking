@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const displayAmountSpan = document.getElementById('displayAmount');
     const nextButton = document.getElementById('nextButton');
 
+    const MAX_AMOUNT = 1000000; // 최대 허용 금액
+
     // 초기 선택 값 (모두 null로 시작하여 어떤 것도 선택되지 않은 상태로 시작)
     let selectedSupportType = null;
     let selectedAmount = null;
@@ -22,18 +24,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const numberValue = parseInt(rawValue, 10);
 
-        // 유효한 숫자인 경우에만 처리
-        if (!isNaN(numberValue) && numberValue > 0) {
+        // 유효성 검사
+        if (isNaN(numberValue) || rawValue === '') { // 입력값이 비어있거나 숫자가 아니면
+            selectedAmount = null;
+            displayAmountSpan.textContent = '0원';
+        } else if (numberValue <= 0) { // 0원 이하의 값
+            alert('후원 금액은 0원보다 커야 합니다.');
+            this.value = ''; // 입력 필드 초기화
+            selectedAmount = null;
+            displayAmountSpan.textContent = '0원';
+        } else if (numberValue > MAX_AMOUNT) { // 최대 금액 초과
+            alert(`후원 금액은 최대 ${MAX_AMOUNT.toLocaleString()}원까지 가능합니다.`);
+            this.value = MAX_AMOUNT.toString(); // 입력 필드를 최대 금액으로 설정
+            selectedAmount = MAX_AMOUNT.toString();
+            displayAmountSpan.textContent = MAX_AMOUNT.toLocaleString() + '원';
+        } else { // 유효한 범위의 숫자
             selectedAmount = numberValue.toString(); // 문자열로 저장
             displayAmountSpan.textContent = numberValue.toLocaleString() + '원'; // 콤마 추가하여 표시
-
-            // 직접 입력 시 다른 금액 버튼 선택 해제 및 radio button checked 해제
-            amountOptions.forEach(card => card.classList.remove('active'));
-            amountOptions.forEach(card => card.querySelector('input[type="radio"]').checked = false);
-        } else {
-            selectedAmount = null; // 유효하지 않은 경우 금액 선택 해제
-            displayAmountSpan.textContent = '0원'; // 금액이 없거나 유효하지 않으면 0원으로 표시
         }
+
+        // 직접 입력 시 다른 금액 버튼 선택 해제 및 radio button checked 해제
+        amountOptions.forEach(card => card.classList.remove('active'));
+        amountOptions.forEach(card => card.querySelector('input[type="radio"]').checked = false);
+        
         updateNextButtonState(); // 버튼 상태 업데이트
     });
 
