@@ -1,5 +1,9 @@
 /* support_style.css */
 
+html {
+    font-size: 16px; /* 기본 폰트 크기 설정, rem 계산의 기준이 됨 */
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -9,73 +13,75 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* 뷰포트 전체 높이 */
+    font-size: 1rem; /* body의 기본 폰트 사이즈 (16px) */
 }
 
 .support-container {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    width: 90%; /* 모바일에서 컨테이너 너비를 약간 줄임 */
     max-width: 600px; /* 적절한 최대 너비 설정 */
-    padding: 30px;
+    padding: 25px; /* 패딩 약간 줄임 */
     box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
 }
 
 .page-title {
     color: #28a745; /* 초록우산 녹색 */
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 2em;
+    margin-bottom: 25px; /* 마진 줄임 */
+    font-size: 1.8rem; /* 폰트 사이즈 조정 */
     font-weight: bold;
 }
 
 .support-section {
-    margin-bottom: 30px;
+    margin-bottom: 25px; /* 마진 줄임 */
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 20px;
+    padding: 15px; /* 패딩 줄임 */
     background-color: #fcfcfc;
 }
 
 .support-section h3 {
     color: #333;
     margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 1.3em;
+    margin-bottom: 15px; /* 마진 줄임 */
+    font-size: 1.2rem; /* 폰트 사이즈 조정 */
     border-bottom: 2px solid #28a745;
-    padding-bottom: 10px;
-    display: inline-block; /* 밑줄이 제목 너비만큼만 가도록 */
+    padding-bottom: 8px; /* 패딩 줄임 */
+    display: inline-block;
 }
 
 /* 라디오 카드 스타일 */
 .radio-card {
-    display: inline-flex; /* 가로 정렬, 내부 요소 중앙 정렬 */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     border: 2px solid #ddd;
     border-radius: 8px;
-    padding: 15px 20px;
+    padding: 12px 15px; /* 패딩 약간 줄임 */
     cursor: pointer;
     transition: all 0.3s ease;
-    margin: 5px; /* 카드 간격 */
-    flex: 1; /* 가로 공간 균등 분배 */
-    min-width: 120px; /* 최소 너비 */
+    margin: 4px; /* 카드 간격 줄임 */
+    flex: 1;
+    min-width: 100px; /* 최소 너비 줄임 */
     text-align: center;
     font-weight: bold;
     color: #555;
-    position: relative; /* input 숨기기 위함 */
+    position: relative;
+    font-size: 0.95rem; /* 폰트 사이즈 조정 */
 }
 
 .radio-card input[type="radio"] {
-    position: absolute; /* 라디오 버튼 숨기기 */
+    position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
 }
 
 .radio-card.active {
-    border-color: #28a745; /* 선택 시 테두리 색상 */
-    background-color: #e6f7ed; /* 선택 시 배경색 */
+    border-color: #28a745;
+    background-color: #e6f7ed;
     color: #28a745;
 }
 
@@ -85,68 +91,69 @@ body {
 
 .support-type-options,
 .amount-options {
-    display: flex; /* 라디오 카드들을 가로로 정렬 */
-    flex-wrap: wrap; /* 공간 부족 시 다음 줄로 넘어가도록 */
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 10px; /* 카드 간의 간격 */
+    gap: 8px; /* 카드 간의 간격 줄임 */
 }
 
 /* 직접 입력 금액 영역 */
 .custom-amount-area {
-    margin-top: 20px;
+    margin-top: 15px; /* 마진 줄임 */
     display: flex;
-    flex-wrap: wrap; /* 작은 화면에서 요소들이 줄바꿈되도록 */
+    flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
+    gap: 8px; /* 간격 줄임 */
     justify-content: center;
 }
 
 .custom-amount-area label {
     font-weight: bold;
     color: #333;
+    font-size: 0.95rem; /* 폰트 사이즈 조정 */
 }
 
 .custom-amount-area input[type="text"] {
-    flex-grow: 1; /* 남은 공간을 채우도록 */
-    max-width: 200px; /* 너무 길어지지 않도록 최대 너비 설정 */
-    padding: 10px;
+    flex-grow: 1;
+    max-width: 180px; /* 최대 너비 줄임 */
+    padding: 8px; /* 패딩 줄임 */
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 0.95rem; /* 폰트 사이즈 조정 */
 }
 
 .current-selected-amount {
-    margin-top: 15px;
-    font-size: 1.1em;
+    margin-top: 10px; /* 마진 줄임 */
+    font-size: 1rem; /* 폰트 사이즈 조정 */
     font-weight: bold;
     color: #333;
-    width: 100%; /* 항상 새 줄에서 시작 */
+    width: 100%;
     text-align: center;
 }
 
 .current-selected-amount #displayAmount {
     color: #007bff;
-    font-size: 1.2em;
+    font-size: 1.1rem; /* 폰트 사이즈 조정 */
 }
 
 
 /* 다음 단계 버튼 */
 .next-step-button {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 30px; /* 마진 줄임 */
 }
 
 #nextButton {
-    background-color: #007bff; /* 파란색 버튼 */
+    background-color: #007bff;
     color: white;
-    padding: 15px 30px;
+    padding: 12px 25px; /* 패딩 줄임 */
     border: none;
     border-radius: 8px;
-    font-size: 1.2em;
+    font-size: 1.1rem; /* 폰트 사이즈 조정 */
     cursor: pointer;
     transition: background-color 0.3s ease, opacity 0.3s ease;
     width: 100%;
-    max-width: 300px;
+    max-width: 280px; /* 최대 너비 줄임 */
 }
 
 #nextButton:hover:not(:disabled) {
@@ -159,32 +166,50 @@ body {
     opacity: 0.7;
 }
 
-/* 반응형 디자인 */
+/* 반응형 디자인 (기존 미디어 쿼리는 그대로 유지하면서 일부 값 조정) */
 @media (max-width: 768px) {
     .support-container {
-        margin: 20px;
-        padding: 20px;
+        margin: 15px; /* 마진 줄임 */
+        padding: 18px; /* 패딩 줄임 */
     }
     .radio-card {
-        flex: 1 1 45%; /* 두 개씩 한 줄 */
-        margin: 5px;
+        flex: 1 1 calc(50% - 16px); /* 두 개씩 한 줄, gap 고려 */
+        margin: 4px;
+        font-size: 0.9rem; /* 폰트 사이즈 다시 조절 */
     }
     .support-type-options,
     .amount-options {
-        justify-content: space-around; /* 카드들을 여백 없이 고르게 분배 */
+        justify-content: center; /* 가운데 정렬 유지 */
     }
     .custom-amount-area {
         flex-direction: column;
         align-items: center;
     }
     .custom-amount-area input[type="text"] {
-        width: 100%;
-        max-width: 250px;
+        width: 90%; /* 너비 조정 */
+        max-width: 220px; /* 최대 너비 조정 */
+    }
+    .current-selected-amount {
+        font-size: 0.95rem; /* 폰트 사이즈 다시 조절 */
     }
 }
 
 @media (max-width: 480px) {
     .radio-card {
-        flex: 1 1 90%; /* 한 개씩 한 줄 */
+        flex: 1 1 95%; /* 한 개씩 한 줄, 거의 전체 너비 */
+        font-size: 0.9rem; /* 폰트 사이즈 다시 조절 */
+    }
+    .page-title {
+        font-size: 1.6rem; /* 작은 화면에서 제목 크기 조절 */
+    }
+    .support-section h3 {
+        font-size: 1.1rem; /* 작은 화면에서 섹션 제목 크기 조절 */
+    }
+    .custom-amount-area input[type="text"] {
+        width: 95%;
+    }
+    #nextButton {
+        padding: 10px 20px; /* 작은 화면에서 버튼 패딩 줄임 */
+        font-size: 1rem; /* 작은 화면에서 버튼 폰트 사이즈 줄임 */
     }
 }
