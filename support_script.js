@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedSupportType = null;
     let selectedAmount = null;
 
-    // 페이지 로드 시 '선택된 금액'을 0원으로 초기화 (HTML에 이미 반영되어 있을 수 있지만, 스크립트가 로드된 후에도 확실하게)
-    displayAmountSpan.textContent = '0원';
+    // 페이지 로드 시 '선택된 금액'을 0원으로 초기화
+    displayAmountSpan.textContent = '0원'; //
 
     // '직접 입력' input 값이 변경될 때마다 selectedAmount 업데이트 및 화면 표시
     customAmountInput.addEventListener('input', function() {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedAmount = null; // 유효하지 않은 경우 금액 선택 해제
             displayAmountSpan.textContent = '0원'; // 금액이 없거나 유효하지 않으면 0원으로 표시
         }
-        updateNextButtonState();
+        updateNextButtonState(); // 버튼 상태 업데이트
     });
 
     // 후원 종류 선택 처리
