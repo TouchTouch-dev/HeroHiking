@@ -64,8 +64,10 @@ body {
     border-color: #007bff;
 }
 
+/* 직접 입력 필드 관련 스타일 (사용되지 않지만 혹시 몰라 유지) */
 .custom-amount-input {
     margin-top: 10px;
+    display: none; /* 기본적으로 숨김 */
 }
 
 .custom-amount-input input {
@@ -169,7 +171,7 @@ body {
 }
 
 #submitButton:hover:not(:disabled) {
-    background-color: #0056b3; /* 마우스 오버 시 더 진한 파란색 */
+    background-color: #0056b3;
 }
 
 #submitButton:disabled {
@@ -189,13 +191,3 @@ body {
         gap: 10px;
     }
 }
-
-/* 이전 초록우산 녹색 관련 스타일 제거 (주석 처리 또는 삭제) */
-/* .support-section h3 {
-    border-bottom: 2px solid #28a745;
-} */
-/* .radio-card.active {
-    border-color: #28a745;
-    background-color: #e6f7ed;
-    color: #28a745;
-} */

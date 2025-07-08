@@ -1,46 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
     const donationAmountSelect = document.getElementById('donationAmount');
-    const customAmountInput = document.getElementById('customAmount');
     const totalDonationAmountSpan = document.getElementById('totalDonationAmount');
+    const paymentMethodRadios = document.querySelectorAll('input[name="paymentMethod"]');
     const submitButton = document.getElementById('submitButton');
     const agreeAllCheckbox = document.getElementById('agreeAll');
-    const termsCheckboxes = document.querySelectorAll('.terms-agreement input');
-    const requiredTermsCheckbox = document.querySelector('.terms-agreement input:not(#agreeAll)[data-required="true"]');
+    const termsCheckboxes = document.querySelectorAll('.terms-agreement input[type="checkbox"]');
+    const requiredTermsCheckbox = document.querySelector('.terms-agreement input[data-required="true"]');
 
-    let selectedDonation = 0;
+    let selectedDonation = 0; // 초기 후원 금액은 0
+    totalDonationAmountSpan.textContent = selectedDonation.toLocaleString(); // 초기 표시
 
     // 후원 금액 드롭다운 변경 이벤트
     donationAmountSelect.addEventListener('change', function() {
-        if (this.value === 'custom') {
-            customAmountInput.style.display = 'block';
-            selectedDonation = parseInt(customAmountInput.value) || 0;
-        } else if (this.value) {
-            customAmountInput.style.display = 'none';
+        if (this.value) { // "선택" 옵션이 아닐 경우
             selectedDonation = parseInt(this.value);
         } else {
-            customAmountInput.style.display = 'none';
             selectedDonation = 0;
         }
         totalDonationAmountSpan.textContent = selectedDonation.toLocaleString();
         updateSubmitButtonState();
     });
 
-    // 직접 입력 금액 필드 입력 이벤트
-    customAmountInput.addEventListener('input', function() {
-        const value = parseInt(this.value) || 0;
-        if (value < 0) {
-            alert('후원 금액은 0원 이상이어야 합니다.');
-            this.value = '';
-            selectedDonation = 0;
-        } else if (value > 1000000) {
-            alert('후원 금액은 최대 1,000,000원까지 가능합니다.');
-            this.value = '1000000';
-            selectedDonation = 1000000;
-        } else {
-            selectedDonation = value;
-        }
-        totalDonationAmountSpan.textContent = selectedDonation.toLocaleString();
-        updateSubmitButtonState();
+    // 결제 방식 라디오 버튼 변경 이벤트
+    paymentMethodRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            updateSubmitButtonState();
+        });
     });
 
     // 전체 동의 체크박스 변경 이벤트
@@ -58,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!this.checked && agreeAllCheckbox.checked) {
                 agreeAllCheckbox.checked = false;
             }
-            // 모두 동의되면 전체 동의 체크 (필수 약관 모두 체크되었는지 확인)
+            // 모든 약관이 체크되면 전체 동의 체크
             const allChecked = Array.from(termsCheckboxes).every(cb => cb.checked);
             agreeAllCheckbox.checked = allChecked;
 
@@ -69,9 +54,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // '후원 신청하기' 버튼 활성화 상태 업데이트 함수
     function updateSubmitButtonState() {
         const isDonationSelected = selectedDonation > 0;
-        const isPaymentMethodSelected = document.querySelector('input:radio:checked') !== null;
-        const isRequiredTermsAgreed = requiredTermsCheckbox ? requiredTermsCheckbox.checked : true; // 필수 약관이 없으면 항상 true
+        const isPaymentMethodSelected = document.querySelector('input[name="paymentMethod"]:checked') !== null;
+        const isRequiredTermsAgreed = requiredTermsCheckbox ? requiredTermsCheckbox.checked : false; // 필수 약관 동의 여부
 
+        // 모든 조건이 충족되면 버튼 활성화
         submitButton.disabled = !(isDonationSelected && isPaymentMethodSelected && isRequiredTermsAgreed);
     }
 
