@@ -191,3 +191,99 @@ body {
         gap: 10px;
     }
 }
+
+/* 팝업 모달 스타일 */
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 고정 위치 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* 내용이 넘칠 경우 스크롤 */
+    background-color: rgba(0,0,0,0.4); /* 반투명 검은 배경 */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Flexbox 미사용 시 중앙 정렬 */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 80vh; /* 뷰포트 높이에 맞게 최대 높이 설정 */
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.terms-scroll-area {
+    max-height: 60vh; /* 약관 내용 스크롤 영역 높이 제한 */
+    overflow-y: auto; /* 내용이 넘칠 경우 세로 스크롤 */
+    padding-right: 10px; /* 스크롤바 공간 확보 */
+    line-height: 1.8;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.terms-scroll-area h1, .terms-scroll-area h2, .terms-scroll-area h3, .terms-scroll-area h4, .terms-scroll-area h5, .terms-scroll-area h6 {
+    color: #333;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.terms-scroll-area ul {
+    list-style: decimal; /* 숫자 목록 */
+    margin-left: 20px;
+    padding: 0;
+}
+
+.terms-scroll-area ul li {
+    margin-bottom: 0.5em;
+}
+
+.terms-scroll-area ul ul {
+    list-style: lower-alpha; /* 알파벳 소문자 목록 */
+    margin-left: 20px;
+}
+
+.terms-scroll-area p {
+    margin-bottom: 1em;
+}
+
+.terms-scroll-area strong {
+    color: #333;
+}

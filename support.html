@@ -49,11 +49,11 @@
                     <div class="nested-checkbox">
                         <label>
                             <input type="checkbox" name="terms" value="required" data-required="true">
-                            (필수) 마침표 후원회원 개인정보 수집·이용 동의 <a href="#">보기</a>
+                            (필수) 마침표 후원회원 개인정보 수집·이용 동의 <a href="#" class="view-terms" data-terms-id="terms1">보기</a>
                         </label>
                         <label>
                             <input type="checkbox" name="terms" value="optional_1">
-                            (선택) 마침표 사업소개 · 후원안내를 위한 개인정보 수집 · 이용 동의 <a href="#">보기</a>
+                            (선택) 마침표 사업소개 · 후원안내를 위한 개인정보 수집 · 이용 동의 <a href="#" class="view-terms" data-terms-id="terms2">보기</a>
                         </label>
                         <label>
                             <input type="checkbox" name="terms" value="optional_2">
@@ -70,6 +70,15 @@
             <div class="form-submit">
                 <button type="submit" id="submitButton" disabled>후원 신청하기</button>
             </div>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>이용약관</h2>
+            <div id="termsContent" class="terms-scroll-area">
+                </div>
         </div>
     </div>
 
