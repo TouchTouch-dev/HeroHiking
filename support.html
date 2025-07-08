@@ -3,51 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>초록우산 후원하기</title>
+    <title>정기후원 신청</title>
     <link rel="stylesheet" href="support_style.css">
 </head>
 <body>
     <div class="support-container">
-        <h2 class="page-title">따뜻한 마음, 함께 나눠요!</h2>
+        <h2 class="page-title">정기후원 신청</h2>
 
-        <div class="support-section">
-            <h3>후원 종류 선택</h3>
-            <div class="support-type-options">
-                <label class="radio-card"> <input type="radio" name="supportType" value="monthly"> <span>정기후원 (매월)</span>
-                </label>
-                <label class="radio-card">
-                    <input type="radio" name="supportType" value="onetime">
-                    <span>일시후원 (한 번만)</span>
-                </label>
+        <div class="support-form">
+            <div class="form-group">
+                <label for="donationAmount">후원금액 *</label>
+                <div class="select-wrapper">
+                    <select id="donationAmount">
+                        <option value="">선택</option>
+                        <option value="10000">10,000</option>
+                        <option value="20000">20,000</option>
+                        <option value="30000">30,000</option>
+                        <option value="50000">50,000</option>
+                        <option value="100000">100,000</option>
+                        <option value="custom">직접입력</option>
+                    </select>
+                </div>
+                <div class="custom-amount-input" style="display: none;">
+                    <input type="text" id="customAmount" placeholder="금액을 입력해주세요 (원)">
+                </div>
             </div>
-        </div>
 
-        <div class="support-section">
-            <h3>후원 금액 선택</h3>
-            <div class="amount-options">
-                <label class="radio-card amount-card" data-amount="20000">
-                    <input type="radio" name="supportAmount" value="20000">
-                    <span>2만원</span>
-                </label>
-                <label class="radio-card amount-card" data-amount="30000"> <input type="radio" name="supportAmount" value="30000"> <span>3만원</span>
-                </label>
-                <label class="radio-card amount-card" data-amount="50000">
-                    <input type="radio" name="supportAmount" value="50000">
-                    <span>5만원</span>
-                </label>
-                <label class="radio-card amount-card" data-amount="100000">
-                    <input type="radio" name="supportAmount" value="100000">
-                    <span>10만원</span>
-                </label>
+            <div class="form-group payment-method">
+                <label>결제방식 *</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="paymentMethod" value="auto"> 자동이체
+                    </label>
+                    <label>
+                        <input type="radio" name="paymentMethod" value="card"> 신용카드
+                    </label>
+                    <label>
+                        <input type="radio" name="paymentMethod" value="easy"> 간편결제
+                    </label>
+                </div>
             </div>
-            <div class="custom-amount-area">
-                <label for="customAmount">직접 입력:</label>
-                <input type="text" id="customAmount" placeholder="금액을 입력해주세요 (원)">
-                <p class="current-selected-amount">선택된 금액: <span id="displayAmount">0</span></p> </div>
-        </div>
 
-        <div class="next-step-button">
-            <button type="button" id="nextButton" disabled>다음 단계로</button>
+            <div class="form-group terms-agreement">
+                <label>정보이용동의</label>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="agreeAll"> 전체 동의
+                    </label>
+                    <div class="nested-checkbox">
+                        <label>
+                            <input type="checkbox" name="terms" value="required" data-required="true">
+                            (필수) 마침표 후원회원 개인정보 수집·이용 동의 <a href="#">보기</a>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="terms" value="optional_1">
+                            (선택) 마침표 사업소개 · 후원안내를 위한 개인정보 수집 · 이용 동의 <a href="#">보기</a>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="terms" value="optional_2">
+                            (선택) 마침표 사업소개 · 후원안내 사항 휴대 전화 수신 동의
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="selected-donation-amount">
+                후원자님이 선택하신 총 후원금은 <span id="totalDonationAmount"></span> 원 입니다.
+            </div>
+
+            <div class="form-submit">
+                <button type="submit" id="submitButton" disabled>후원 신청하기</button>
+            </div>
         </div>
     </div>
 

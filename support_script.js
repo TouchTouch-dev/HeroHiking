@@ -1,101 +1,80 @@
-// support_script.js
-
 document.addEventListener('DOMContentLoaded', function() {
-    const supportTypeOptions = document.querySelectorAll('.support-type-options .radio-card');
-    const amountOptions = document.querySelectorAll('.amount-options .radio-card');
+    const donationAmountSelect = document.getElementById('donationAmount');
     const customAmountInput = document.getElementById('customAmount');
-    const displayAmountSpan = document.getElementById('displayAmount');
-    const nextButton = document.getElementById('nextButton');
+    const totalDonationAmountSpan = document.getElementById('totalDonationAmount');
+    const submitButton = document.getElementById('submitButton');
+    const agreeAllCheckbox = document.getElementById('agreeAll');
+    const termsCheckboxes = document.querySelectorAll('.terms-agreement input');
+    const requiredTermsCheckbox = document.querySelector('.terms-agreement input:not(#agreeAll)[data-required="true"]');
 
-    const MAX_AMOUNT = 1000000; // 최대 허용 금액
+    let selectedDonation = 0;
 
-    // 초기 선택 값 (모두 null로 시작하여 어떤 것도 선택되지 않은 상태로 시작)
-    let selectedSupportType = null;
-    let selectedAmount = null;
-
-    // 페이지 로드 시 '선택된 금액'을 0원으로 초기화
-    displayAmountSpan.textContent = '0원';
-
-    // '직접 입력' input 값이 변경될 때마다 selectedAmount 업데이트 및 화면 표시
-    customAmountInput.addEventListener('input', function() {
-        // 숫자만 입력되도록 필터링
-        const rawValue = this.value.replace(/[^0-9]/g, '');
-        this.value = rawValue; // 입력 필드에 숫자만 남도록 즉시 반영
-
-        const numberValue = parseInt(rawValue, 10);
-
-        // 유효성 검사
-        if (isNaN(numberValue) || rawValue === '') { // 입력값이 비어있거나 숫자가 아니면
-            selectedAmount = null;
-            displayAmountSpan.textContent = '0원';
-        } else if (numberValue <= 0) { // 0원 이하의 값
-            alert('후원 금액은 0원보다 커야 합니다.');
-            this.value = ''; // 입력 필드 초기화
-            selectedAmount = null;
-            displayAmountSpan.textContent = '0원';
-        } else if (numberValue > MAX_AMOUNT) { // 최대 금액 초과
-            alert(`후원 금액은 최대 ${MAX_AMOUNT.toLocaleString()}원까지 가능합니다.`);
-            this.value = MAX_AMOUNT.toString(); // 입력 필드를 최대 금액으로 설정
-            selectedAmount = MAX_AMOUNT.toString();
-            displayAmountSpan.textContent = MAX_AMOUNT.toLocaleString() + '원';
-        } else { // 유효한 범위의 숫자
-            selectedAmount = numberValue.toString(); // 문자열로 저장
-            displayAmountSpan.textContent = numberValue.toLocaleString() + '원'; // 콤마 추가하여 표시
-        }
-
-        // 직접 입력 시 다른 금액 버튼 선택 해제 및 radio button checked 해제
-        amountOptions.forEach(card => card.classList.remove('active'));
-        amountOptions.forEach(card => card.querySelector('input[type="radio"]').checked = false);
-        
-        updateNextButtonState(); // 버튼 상태 업데이트
-    });
-
-    // 후원 종류 선택 처리
-    supportTypeOptions.forEach(card => {
-        card.addEventListener('click', function() {
-            // 모든 후원 종류 선택 해제 및 radio button checked 해제
-            supportTypeOptions.forEach(item => item.classList.remove('active'));
-            supportTypeOptions.forEach(item => item.querySelector('input[type="radio"]').checked = false);
-
-            // 현재 클릭된 카드 활성화 및 radio button checked
-            this.classList.add('active');
-            this.querySelector('input[type="radio"]').checked = true;
-            selectedSupportType = this.querySelector('input[type="radio"]').value; // 선택된 후원 종류 값 저장
-            updateNextButtonState(); // 버튼 상태 업데이트
-        });
-    });
-
-    // 후원 금액 선택 처리
-    amountOptions.forEach(card => {
-        card.addEventListener('click', function() {
-            // 모든 후원 금액 선택 해제 및 radio button checked 해제
-            amountOptions.forEach(item => item.classList.remove('active'));
-            amountOptions.forEach(item => item.querySelector('input[type="radio"]').checked = false);
-
-            // 현재 클릭된 카드 활성화 및 radio button checked
-            this.classList.add('active');
-            this.querySelector('input[type="radio"]').checked = true;
-            selectedAmount = this.dataset.amount; // data-amount 값 저장
-            displayAmountSpan.textContent = parseInt(selectedAmount, 10).toLocaleString() + '원'; // 화면에 표시
-            customAmountInput.value = ''; // 직접 입력 필드 초기화
-            updateNextButtonState(); // 버튼 상태 업데이트
-        });
-    });
-
-    // '다음 단계로' 버튼 활성화 상태 업데이트 함수
-    function updateNextButtonState() {
-        // 후원 종류가 선택되었고 (selectedSupportType이 null이 아님),
-        // 후원 금액이 선택되었거나 (selectedAmount가 null이 아니고 유효한 숫자) 인 경우에만 활성화
-        const isSupportTypeSelected = selectedSupportType !== null;
-        const isAmountSelected = selectedAmount !== null && selectedAmount !== '' && parseInt(selectedAmount, 10) > 0;
-
-        if (isSupportTypeSelected && isAmountSelected) {
-            nextButton.disabled = false; // 활성화
+    // 후원 금액 드롭다운 변경 이벤트
+    donationAmountSelect.addEventListener('change', function() {
+        if (this.value === 'custom') {
+            customAmountInput.style.display = 'block';
+            selectedDonation = parseInt(customAmountInput.value) || 0;
+        } else if (this.value) {
+            customAmountInput.style.display = 'none';
+            selectedDonation = parseInt(this.value);
         } else {
-            nextButton.disabled = true; // 비활성화
+            customAmountInput.style.display = 'none';
+            selectedDonation = 0;
         }
+        totalDonationAmountSpan.textContent = selectedDonation.toLocaleString();
+        updateSubmitButtonState();
+    });
+
+    // 직접 입력 금액 필드 입력 이벤트
+    customAmountInput.addEventListener('input', function() {
+        const value = parseInt(this.value) || 0;
+        if (value < 0) {
+            alert('후원 금액은 0원 이상이어야 합니다.');
+            this.value = '';
+            selectedDonation = 0;
+        } else if (value > 1000000) {
+            alert('후원 금액은 최대 1,000,000원까지 가능합니다.');
+            this.value = '1000000';
+            selectedDonation = 1000000;
+        } else {
+            selectedDonation = value;
+        }
+        totalDonationAmountSpan.textContent = selectedDonation.toLocaleString();
+        updateSubmitButtonState();
+    });
+
+    // 전체 동의 체크박스 변경 이벤트
+    agreeAllCheckbox.addEventListener('change', function() {
+        termsCheckboxes.forEach(checkbox => {
+            checkbox.checked = this.checked;
+        });
+        updateSubmitButtonState();
+    });
+
+    // 개별 약관 체크박스 변경 이벤트
+    termsCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            // 하나라도 해제되면 전체 동의 해제
+            if (!this.checked && agreeAllCheckbox.checked) {
+                agreeAllCheckbox.checked = false;
+            }
+            // 모두 동의되면 전체 동의 체크 (필수 약관 모두 체크되었는지 확인)
+            const allChecked = Array.from(termsCheckboxes).every(cb => cb.checked);
+            agreeAllCheckbox.checked = allChecked;
+
+            updateSubmitButtonState();
+        });
+    });
+
+    // '후원 신청하기' 버튼 활성화 상태 업데이트 함수
+    function updateSubmitButtonState() {
+        const isDonationSelected = selectedDonation > 0;
+        const isPaymentMethodSelected = document.querySelector('input:radio:checked') !== null;
+        const isRequiredTermsAgreed = requiredTermsCheckbox ? requiredTermsCheckbox.checked : true; // 필수 약관이 없으면 항상 true
+
+        submitButton.disabled = !(isDonationSelected && isPaymentMethodSelected && isRequiredTermsAgreed);
     }
 
-    // 페이지 로드 시 초기 상태 업데이트
-    updateNextButtonState();
+    // 초기 상태 업데이트
+    updateSubmitButtonState();
 });
